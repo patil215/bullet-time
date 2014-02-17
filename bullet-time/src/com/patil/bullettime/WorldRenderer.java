@@ -1,9 +1,7 @@
 package com.patil.bullettime;
 
-import sun.rmi.runtime.Log;
-
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Application.ApplicationType;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -45,14 +43,10 @@ public class WorldRenderer {
 	private boolean debug = false;
 	private int width;
 	private int height;
-	float ppuX; // pixels per unit on the X axis
-	 float ppuY; // pixels per unit on the Y axis
 
 	public void setSize(int w, int h) {
 		this.width = w;
 		this.height = h;
-		ppuX = (float) width / CAMERA_WIDTH;
-		ppuY = (float) height / CAMERA_HEIGHT;
 	}
 
 	public boolean isDebug() {
@@ -116,19 +110,19 @@ public class WorldRenderer {
 			return;
 		drawJoysticks();
 	}
-	
+
 	private void drawBullets() {
-		for(Bullet bullet : world.getBullets()) {
-			spriteBatch.draw(wallTexture, bullet.position.x * ppuX, bullet.position.y * ppuY, Bullet.SIZE * ppuX, Bullet.SIZE * ppuY);
+		for (Bullet bullet : world.getBullets()) {
+			spriteBatch.draw(wallTexture, bullet.position.x, bullet.position.y,
+					bullet.widthX, bullet.widthY);
 		}
 	}
 
 	private void drawWalls() {
 		for (Wall wall : world.getDrawableWalls((int) CAMERA_WIDTH,
 				(int) CAMERA_HEIGHT)) {
-			spriteBatch.draw(wallTexture, wall.getPosition().x * ppuX,
-					wall.getPosition().y * ppuY, Wall.SIZE * ppuX, Wall.SIZE
-							* ppuY);
+			spriteBatch.draw(wallTexture, wall.getPosition().x,
+					wall.getPosition().y, wall.sizeX, wall.sizeY);
 		}
 	}
 
@@ -152,9 +146,8 @@ public class WorldRenderer {
 		else {
 			playerFrame = playerIdleLeft;
 		}
-		spriteBatch.draw(playerFrame, player.getPosition().x * ppuX,
-				player.getPosition().y * ppuY, Player.SIZE * ppuX, Player.SIZE
-						* ppuY);
+		spriteBatch.draw(playerFrame, player.getPosition().x,
+				player.getPosition().y, Player.SIZE, Player.SIZE);
 	}
 
 	private void drawJoysticks() {

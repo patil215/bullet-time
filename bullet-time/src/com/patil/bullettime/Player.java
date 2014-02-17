@@ -9,7 +9,7 @@ public class Player {
 		IDLE, WALKING, JUMPING, DYING
 	}
 
-	public static final float SIZE = 0.5f; // half a unit
+	public static final float SIZE = 0.5f;
 
 	Vector2 	position = new Vector2();
 	Vector2 	acceleration = new Vector2();

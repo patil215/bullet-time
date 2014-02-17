@@ -4,20 +4,21 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bullet {
-	public static final float SIZE = 0.1f;
 
 	Vector2 position = new Vector2();
 	Vector2 velocity = new Vector2();
 	double xSpeed = 0;
 	double ySpeed = 0;
+	int widthX = 20;
+	int widthY = 20;
 	Rectangle bounds = new Rectangle();
 
 	public Bullet(Vector2 position, double xSpeed, double ySpeed) {
 		this.position = position;
 		this.bounds.x = position.x;
 		this.bounds.y = position.y;
-		this.bounds.height = SIZE;
-		this.bounds.width = SIZE;
+		this.bounds.height = widthX;
+		this.bounds.width = widthY;
 		this.xSpeed = xSpeed;
 		this.ySpeed = ySpeed;
 	}

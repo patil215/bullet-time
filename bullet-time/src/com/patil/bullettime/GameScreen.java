@@ -127,15 +127,15 @@ public class GameScreen implements Screen, InputProcessor {
 			}
 			return true;
 		} else {
-			float distX = x - (controller.player.getPosition().x * renderer.ppuX);
-			float distY = (height - y) - (controller.player.getPosition().y * renderer.ppuY);
+			float distX = x - (controller.player.getPosition().x);
+			float distY = (height - y) - (controller.player.getPosition().y);
 			double distHypotenuse = Math.sqrt(Math.pow(distX, 2)
 					+ Math.pow(distY, 2));
 			double ratio = 0.1 / distHypotenuse;
 			double bulletX = (distX * ratio);
 			double bulletY = (distY * ratio);
 			System.out.println(x + " " + y);
-			System.out.println(controller.player.getPosition().x *renderer.ppuX + " " + controller.player.getPosition().y * renderer.ppuY);
+			System.out.println(controller.player.getPosition().x + " " + controller.player.getPosition().y);
 			System.out.println();
 			Bullet bullet = new Bullet(new Vector2(
 					controller.player.getPosition().x,

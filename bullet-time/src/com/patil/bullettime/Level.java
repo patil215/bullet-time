@@ -2,8 +2,6 @@ package com.patil.bullettime;
 
 import com.badlogic.gdx.math.Vector2;
 
-import com.badlogic.gdx.math.Vector2;
-
 public class Level {
 
 	private int width;
